@@ -1,0 +1,29 @@
+---
+description: Tailwind CSS and styling conventions
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# Styling
+
+## Utilities
+- Use `cn()` from `@/lib/utils` to merge classes
+- CVA for component variants (`buttonVariants`, `badgeVariants`)
+- Design tokens in `tailwind.config.ts` — no magic hex in components
+
+## Tailwind
+- Mobile-first responsive prefixes
+- Consistent spacing scale (4, 6, 8, 16, 24)
+- Custom animations in `tailwind.config.ts` keyframes
+
+## CSS
+- Global styles only in `globals.css` (tokens, base, glass utilities)
+- No CSS modules unless exception documented
+- Prefer Tailwind over inline styles
+
+## Themes
+```tsx
+className="bg-background text-foreground"
+className="dark:bg-primary-950"
+```
+Use semantic color names, not raw colors in components.

@@ -1,0 +1,29 @@
+---
+description: Deployment and CI/CD guidelines
+globs: .github/**/*,Makefile
+alwaysApply: false
+---
+
+# Deployment
+
+## CI Pipeline
+1. `npm ci`
+2. `npm run lint`
+3. `npm run typecheck`
+4. `npm run build`
+
+## GitHub Actions
+- Trigger on PR and push to `main`
+- Cache `node_modules` via setup-node
+- Fail on lint/type errors
+
+## Production
+- Next.js `output: 'standalone'` for container deploy
+- Env vars via platform secrets (Vercel, K8s, etc.)
+- CSP and security headers in `next.config.ts`
+
+## Makefile
+Primary dev interface: `make install`, `make dev`, `make build`, `make prod`
+
+## Health
+- Future: `/api/health` route for load balancer checks

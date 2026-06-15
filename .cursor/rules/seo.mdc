@@ -1,0 +1,30 @@
+---
+description: SEO and metadata standards
+globs: src/app/**/*
+alwaysApply: false
+---
+
+# SEO
+
+## Metadata API
+Every page exports `metadata` or `generateMetadata`:
+```tsx
+export const metadata: Metadata = {
+  title: '...',
+  description: '...',
+  openGraph: { title, description, images, locale },
+  alternates: { canonical, languages: { ro, en } },
+};
+```
+
+## Structure
+- One `h1` per page matching primary keyword
+- Descriptive `title` (50–60 chars), `description` (150–160 chars)
+
+## Technical
+- `sitemap.ts` and `robots.ts` in app root
+- Semantic URLs: `/ro/facultati/inginerie-electrica`
+- JSON-LD for Organization on homepage (future)
+
+## Performance = SEO
+- Optimize LCP (hero image/font), CLS (explicit dimensions), INP (minimal client JS)

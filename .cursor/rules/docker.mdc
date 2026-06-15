@@ -1,0 +1,29 @@
+---
+description: Docker development and production practices
+globs: Dockerfile,docker-compose.yml,.dockerignore
+alwaysApply: false
+---
+
+# Docker
+
+## Files
+- `Dockerfile` — multi-stage: deps → build → runner
+- `docker-compose.yml` — dev and prod profiles
+- `.dockerignore` — exclude `node_modules`, `.git`, `.env.local`
+
+## Practices
+- Run as non-root user in production stage
+- `NODE_ENV=production` in runner
+- Use `standalone` Next.js output for smaller images
+- Never copy `.env.local` into image; inject at runtime
+
+## Commands
+```bash
+make docker-build   # Build production image
+make docker-up      # Start containers
+make docker-down    # Stop containers
+```
+
+## Dev
+- Dev compose mounts source with hot reload
+- Prod compose uses built standalone output

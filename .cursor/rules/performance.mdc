@@ -1,0 +1,29 @@
+---
+description: Performance optimization rules
+alwaysApply: true
+---
+
+# Performance
+
+## Components
+- Server Components default; minimize client bundle
+- `dynamic(() => import(...), { ssr: false })` for Three.js scenes
+- `loading` fallbacks for lazy sections
+
+## Fonts
+- `next/font` with `display: swap`, subset Latin + Romanian diacritics
+
+## Images
+- `next/image` with explicit `width`/`height` or `fill`
+- WebP/AVIF formats, `priority` only for LCP image
+
+## Data
+- Fetch in Server Components or Route Handlers
+- Cache with `unstable_cache` or `revalidate` when CMS connected
+
+## Bundle
+- Tree-shake Three.js imports (`@react-three/drei` selective)
+- Analyze with `@next/bundle-analyzer` in CI (optional)
+
+## Hydration
+- Avoid hydration mismatch: no `window` in SSR, use `useEffect` or `suppressHydrationWarning` on theme html only

@@ -1,0 +1,40 @@
+---
+description: Core architecture patterns for UPB platform
+alwaysApply: true
+---
+
+# Architecture
+
+## Stack
+Next.js App Router, TypeScript, Tailwind CSS, next-intl, Framer Motion, React Three Fiber.
+
+## Directory Layout
+```
+src/
+  app/           # Routes, layouts, metadata
+  components/    # ui/, layout/, sections/, animations/, 3d/
+  features/      # Domain-specific modules
+  lib/           # Utilities, cn(), constants
+  services/      # Data access, CMS/DAM adapters
+  hooks/         # Custom React hooks
+  providers/     # Context providers
+  types/         # Shared TypeScript types
+  config/        # App configuration
+  data/          # Mock/static data (temporary)
+  i18n/          # Locale config and messages
+```
+
+## Principles
+- Server Components by default; `"use client"` only for interactivity, hooks, browser APIs, 3D, animations.
+- Colocate feature logic in `features/`; keep `components/` presentational.
+- All external data flows through `services/` adapters — never import CMS SDKs in components.
+- Use `@/` import alias consistently.
+- One `h1` per page; semantic HTML throughout.
+
+## Routing
+- Locale prefix: `/[locale]/...` via next-intl middleware.
+- Route groups for layout variants: `(marketing)`, `(admin)` (future).
+
+## Env
+- Secrets in `.env.local` only; document in `.env.example`.
+- Access env via `src/config/env.ts` with validation.

@@ -1,0 +1,32 @@
+---
+description: Future CMS integration architecture
+globs: src/services/**/*,src/types/**/*
+alwaysApply: false
+---
+
+# CMS Integration (Future)
+
+## Abstraction
+All content via service interfaces in `src/services/content/`:
+```ts
+interface ContentService {
+  getAnnouncements(filters?): Promise<Announcement[]>;
+  getNews(slug?): Promise<NewsItem[]>;
+  getEvents(filters?): Promise<Event[]>;
+  getFaculties(): Promise<Faculty[]>;
+  getPage(slug: string): Promise<Page>;
+}
+```
+
+## Adapters
+- `MockContentService` — current (mock data)
+- `StrapiContentService` / `SanityContentService` — future
+
+## Rules
+- Components import `getContentService()` factory, never CMS SDK
+- Map CMS shapes to domain types in adapter layer
+- Support preview/draft mode via `?preview=true` (future)
+- Cache with revalidation tags per content type
+
+## Types
+Domain types in `src/types/content.ts` — CMS-agnostic field names.

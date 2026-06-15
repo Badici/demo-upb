@@ -1,0 +1,30 @@
+---
+description: Accessibility standards for UPB platform
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# Accessibility
+
+## HTML
+- Semantic elements: `header`, `nav`, `main`, `section`, `article`, `footer`
+- One `h1` per page; no skipped heading levels
+- `lang` attribute set per locale
+
+## Interactive
+- All buttons/links keyboard-focusable with visible focus ring (`focus-visible:ring-2`)
+- `aria-label` on icon-only buttons
+- `aria-current="page"` on active nav items
+- Skip-to-content link in layout
+
+## Images & Media
+- Descriptive `alt` on all images
+- `aria-hidden="true"` on decorative 3D canvases with text alternative nearby
+
+## Motion
+- Respect `prefers-reduced-motion`: disable or simplify animations
+- No seizure-inducing flashing
+
+## Contrast
+- WCAG AA minimum (4.5:1 body, 3:1 large text)
+- Test glass overlays for readability in both themes

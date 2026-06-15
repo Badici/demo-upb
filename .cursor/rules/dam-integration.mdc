@@ -1,0 +1,36 @@
+---
+description: Future DAM (Digital Asset Management) integration
+globs: src/services/**/*,src/types/**/*
+alwaysApply: false
+---
+
+# DAM Integration (Future)
+
+## Abstraction
+Media via `src/services/media/`:
+```ts
+interface MediaService {
+  getAsset(id: string): Promise<MediaAsset>;
+  getAssetsByTag(tag: string): Promise<MediaAsset[]>;
+  getOptimizedUrl(asset, options): string;
+}
+```
+
+## Asset Type
+```ts
+interface MediaAsset {
+  id: string;
+  url: string;
+  alt: string;
+  width: number;
+  height: number;
+  mimeType: string;
+  tags: string[];
+}
+```
+
+## Rules
+- Use `next/image` with DAM URLs via `getOptimizedUrl`
+- Mock service returns static `/images/` paths for now
+- Future: Cloudinary, Imgix, or headless CMS media library
+- Never hardcode production CDN URLs in components

@@ -1,0 +1,35 @@
+---
+description: UPB design system tokens and glassmorphism
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# Design System
+
+## Brand
+- Primary: `#0A1F44` (dark blue) — use `bg-primary`, `text-primary`
+- Accent: `#3B82F6` (blue), `#06B6D4` (cyan)
+- Font: Rubik via `next/font/google`
+- Headings: `font-bold` to `font-black`, large scale (`text-4xl`–`text-7xl`)
+
+## Glass System (SINGLE SOURCE)
+Use `GlassCard` from `@/components/ui/glass-card` or `glass` utility class.
+Never create ad-hoc glass styles. Tokens:
+- `backdrop-blur-xl`
+- `bg-white/10` (dark) / `bg-white/70` (light)
+- `border border-white/20`
+- `shadow-glass` (custom token)
+- Hover: `hover:bg-white/15`, `hover:border-white/30`
+
+## Spacing
+- Section: `py-16 md:py-24`
+- Container: `max-w-7xl mx-auto px-6 md:px-10`
+- Gap: `gap-6` or `gap-8`
+
+## Cards
+- `rounded-2xl`, soft shadows, hover scale `1.02–1.03`
+- CVA variants for buttons and badges
+
+## Dark/Light
+- CSS variables in `globals.css`; toggle via `next-themes`
+- Test both modes for every new component

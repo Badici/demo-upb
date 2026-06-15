@@ -1,0 +1,32 @@
+---
+description: Internationalization with next-intl
+globs: src/i18n/**/*,src/app/**/*
+alwaysApply: false
+---
+
+# i18n
+
+## Setup
+- `next-intl` with App Router
+- Locales: `ro` (default), `en`
+- Messages in `src/i18n/messages/{locale}.json`
+
+## Usage
+```tsx
+// Server
+import { getTranslations } from 'next-intl/server';
+const t = await getTranslations('HomePage');
+
+// Client
+import { useTranslations } from 'next-intl';
+const t = useTranslations('HomePage');
+```
+
+## Rules
+- All user-facing strings in message files — no hardcoded UI text
+- Romanian copy must use proper diacritics (ă, â, î, ș, ț)
+- URL structure: `/ro/...`, `/en/...`
+- `hreflang` alternates in metadata for SEO
+
+## Content
+- Default locale `ro`; English is full translation, not partial

@@ -1,0 +1,33 @@
+---
+description: Security best practices
+alwaysApply: true
+---
+
+# Security
+
+## Secrets
+- Never commit `.env.local`, API keys, or tokens
+- `.env.example` documents required vars without values
+- Validate env at startup in `src/config/env.ts`
+
+## Headers (next.config.ts)
+```ts
+headers: [
+  { key: 'X-Frame-Options', value: 'DENY' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+]
+```
+CSP-ready: prepare `Content-Security-Policy` for production.
+
+## Input
+- Sanitize user input (future forms/auth)
+- No `dangerouslySetInnerHTML` without DOMPurify
+
+## Dependencies
+- Run `npm audit` in CI
+- Pin major versions; review updates
+
+## Docker
+- Non-root container user
+- No secrets in Dockerfile layers

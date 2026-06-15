@@ -1,0 +1,38 @@
+---
+description: Component structure and naming conventions
+globs: src/components/**/*,src/features/**/*
+alwaysApply: false
+---
+
+# Component Structure
+
+## Naming
+- PascalCase files: `FacultyCard.tsx`
+- One primary export per file
+- Suffix: `*Section` for page sections, `*Card` for cards, `*Provider` for providers
+
+## Pattern
+```tsx
+// Server Component (default)
+export function FacultyCard({ faculty }: FacultyCardProps) { ... }
+
+// Client only when needed
+"use client";
+export function AnimatedCounter({ value }: Props) { ... }
+```
+
+## Composition
+- `components/ui/` — primitives (Button, GlassCard, Badge)
+- `components/layout/` — Header, Footer, Container
+- `components/sections/` — homepage/page sections
+- `components/animations/` — motion wrappers
+- `components/3d/` — Three.js scenes
+
+## Props
+- Extend native HTML props where applicable
+- Use `className` prop with `cn()` for style overrides
+- Prefer composition over prop drilling; use providers for theme/locale
+
+## Forbidden
+- No business logic in UI primitives
+- No direct fetch in leaf components — use services or server components
