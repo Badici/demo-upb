@@ -31,19 +31,19 @@ export async function Footer() {
             <Link href="/" className="mb-4 inline-flex items-center gap-3">
               <Image
                 src="/logo.svg"
-                alt="POLITEHNICA București"
+                alt="UNST Politehnica București"
                 width={40}
                 height={40}
                 className="h-10 w-10 object-contain dark:hidden"
               />
               <Image
                 src="/images/logo_alb.svg"
-                alt="POLITEHNICA București"
+                alt="UNST Politehnica București"
                 width={40}
                 height={40}
                 className="hidden h-10 w-10 object-contain dark:block"
               />
-              <span className="font-bold text-foreground">POLITEHNICA</span>
+              <span className="font-bold text-foreground">UNST Politehnica</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               {t("description")}
@@ -111,7 +111,7 @@ export async function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-xs text-muted">
-            © {new Date().getFullYear()} UNSTPB. {t("rights")}
+            © {new Date().getFullYear()} UNSTB. {t("rights")}
           </p>
           <p className="text-xs text-muted">
             {siteConfig.shortName}

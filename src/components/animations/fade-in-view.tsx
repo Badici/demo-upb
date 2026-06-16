@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useIsMounted } from "@/lib/use-is-mounted";
 import { cn } from "@/lib/utils";
 
 interface FadeInViewProps {
@@ -27,7 +28,9 @@ export function FadeInView({
   direction = "up",
   duration = 0.5,
 }: FadeInViewProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const mounted = useIsMounted();
+  const prefersReducedMotion = useReducedMotion();
+  const shouldReduceMotion = mounted && prefersReducedMotion;
 
   if (shouldReduceMotion) {
     return <div className={className}>{children}</div>;

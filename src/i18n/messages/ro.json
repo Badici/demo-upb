@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "title": "POLITEHNICA București — Universitatea Națională de Știință și Tehnologie",
+    "title": "UNST Politehnica București — Universitatea Națională de Știință și Tehnică",
     "description": "Cea mai mare școală de ingineri din România. Tradiție, inovație și excelență academică de peste 200 de ani."
   },
   "Navigation": {
@@ -13,10 +13,10 @@
     "skipToContent": "Sari la conținut"
   },
   "Hero": {
-    "badge": "Universitate Națională de Știință și Tehnologie",
+    "badge": "Universitate Națională de Știință și Tehnică",
     "title": "Viitorul ingineriei",
     "titleHighlight": "începe aici",
-    "subtitle": "POLITEHNICA București — peste 200 de ani de tradiție, inovație și excelență academică. Cea mai mare școală de ingineri din România.",
+    "subtitle": "UNST Politehnica București — peste 200 de ani de tradiție, inovație și excelență academică. Cea mai mare școală de ingineri din România.",
     "ctaPrimary": "Admitere 2026",
     "ctaSecondary": "Descoperă facultățile",
     "stats": {
@@ -64,11 +64,11 @@
     }
   },
   "Stats": {
-    "title": "POLITEHNICA în cifre",
+    "title": "UNST Politehnica în cifre",
     "subtitle": "O universitate de referință în Europa de Sud-Est"
   },
   "Footer": {
-    "description": "Universitatea Națională de Știință și Tehnologie POLITEHNICA București — excelență în educație, cercetare și inovare.",
+    "description": "Universitatea Națională de Știință și Tehnică Politehnica București — excelență în educație, cercetare și inovare.",
     "quickLinks": "Linkuri rapide",
     "resources": "Resurse",
     "contact": "Contact",

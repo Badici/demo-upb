@@ -45,7 +45,7 @@ export function Header() {
                   onHero ? "text-white" : "text-foreground",
                 )}
               >
-                POLITEHNICA
+                UNST Politehnica
               </p>
               <p className={cn("text-xs", onHero ? "text-white/60" : "text-muted")}>
                 București

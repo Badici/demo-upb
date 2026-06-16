@@ -24,7 +24,7 @@ export function HeroSection() {
     <section className="relative min-h-screen overflow-hidden pt-24">
       {/* Animated background */}
       <div className="absolute inset-0 gradient-hero" aria-hidden="true" />
-      <div className="absolute inset-0 grid-pattern opacity-50" aria-hidden="true" />
+      <div className="absolute inset-0 millimetric-paper opacity-70" aria-hidden="true" />
 
       {/* Floating orbs */}
       <div className="pointer-events-none absolute left-1/4 top-1/4 h-64 w-64 animate-pulse-glow rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
@@ -67,7 +67,10 @@ export function HeroSection() {
                 </a>
                 <a
                   href="#facultati"
-                  className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}
+                  className={cn(
+                    buttonVariants({ variant: "secondary", size: "lg" }),
+                    "text-white hover:text-white",
+                  )}
                 >
                   {t("ctaSecondary")}
                 </a>

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useIsMounted } from "@/lib/use-is-mounted";
 
 interface StaggerContainerProps {
   children: ReactNode;
@@ -14,7 +15,9 @@ export function StaggerContainer({
   className,
   stagger = 0.1,
 }: StaggerContainerProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const mounted = useIsMounted();
+  const prefersReducedMotion = useReducedMotion();
+  const shouldReduceMotion = mounted && prefersReducedMotion;
 
   if (shouldReduceMotion) {
     return <div className={className}>{children}</div>;

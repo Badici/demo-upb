@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
+import { useIsMounted } from "@/lib/use-is-mounted";
 import { cn } from "@/lib/utils";
 
 interface AnimatedCounterProps {
@@ -23,15 +24,18 @@ export function AnimatedCounter({
   duration = 2000,
   className,
 }: AnimatedCounterProps) {
-  const shouldReduceMotion = useReducedMotion();
-  const [display, setDisplay] = useState(() =>
-    shouldReduceMotion ? value : 0,
-  );
+  const mounted = useIsMounted();
+  const prefersReducedMotion = useReducedMotion();
+  const shouldReduceMotion = mounted && prefersReducedMotion;
+  const [display, setDisplay] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (shouldReduceMotion) return;
+    if (shouldReduceMotion) {
+      setDisplay(value);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

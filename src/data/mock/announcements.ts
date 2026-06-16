@@ -5,7 +5,7 @@ export const announcements: Announcement[] = [
     id: "1",
     slug: "doctor-honoris-causa-eliezer-rabinovici",
     title:
-      "POLITEHNICA București va acorda Titlul Academic de Doctor Honoris Causa profesorului Eliezer Rabinovici",
+      "UNST Politehnica București va acorda Titlul Academic de Doctor Honoris Causa profesorului Eliezer Rabinovici",
     excerpt:
       "Universitatea recunoaște contribuțiile remarcabile ale profesorului în domeniul fizicii teoretice și colaborărilor internaționale.",
     date: "2026-05-29",
@@ -16,7 +16,7 @@ export const announcements: Announcement[] = [
     id: "2",
     slug: "zilele-unesco-upb",
     title:
-      "Zilele UNESCO în Universitatea Națională de Știință și Tehnologie POLITEHNICA București",
+      "Zilele UNESCO în Universitatea Națională de Știință și Tehnică Politehnica București",
     excerpt:
       "O serie de evenimente dedicate educației pentru dezvoltare durabilă și cooperării internaționale în cercetare.",
     date: "2026-05-24",
@@ -27,7 +27,7 @@ export const announcements: Announcement[] = [
     slug: "intrebari-interviu-upbizz",
     title: "Întrebări Interviu UPBizz – Paula Cionca",
     excerpt:
-      "Antreprenoriatul studențesc la POLITEHNICA: perspective și oportunități pentru viitorii inovatori.",
+      "Antreprenoriatul studențesc la UNST Politehnica București: perspective și oportunități pentru viitorii inovatori.",
     date: "2026-06-03",
     tags: ["upbizz", "antreprenoriat"],
   },
@@ -36,7 +36,7 @@ export const announcements: Announcement[] = [
     slug: "simulare-admitere-martie",
     title: "Simulare Admitere — 7 Martie 2026",
     excerpt:
-      "Pregătește-te pentru admitere cu simularea oficială POLITEHNICA. Înscrieri deschise pentru toate facultățile.",
+      "Pregătește-te pentru admitere cu simularea oficială UNST Politehnica București. Înscrieri deschise pentru toate facultățile.",
     date: "2026-02-15",
     tags: ["admitere", "viitori-studenti"],
     featured: true,
@@ -46,7 +46,7 @@ export const announcements: Announcement[] = [
     slug: "platforma-alumni-upb",
     title: "Lansarea Platformei Comunității Alumni UPB",
     excerpt:
-      "O platformă online de networking dedicată absolvenților POLITEHNICA din întreaga lume.",
+      "O platformă online de networking dedicată absolvenților UNST Politehnica București din întreaga lume.",
     date: "2026-01-20",
     tags: ["alumni", "comunitate"],
   },
@@ -54,7 +54,7 @@ export const announcements: Announcement[] = [
     id: "6",
     slug: "aniversare-200-ani",
     title:
-      "Universitatea POLITEHNICA din București a aniversat 200 de ani de tradiție și inovații tehnice",
+      "UNST Politehnica București a aniversat 200 de ani de tradiție și inovații tehnice",
     excerpt:
       "Două secole de excelență în inginerie, cercetare și formare a generațiilor de specialiști.",
     date: "2025-11-18",

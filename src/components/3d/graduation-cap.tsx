@@ -1,210 +1,138 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Line } from "@react-three/drei";
-import { useMemo, useRef } from "react";
-import { Vector3 } from "three";
-import type { Group } from "three";
+import { Suspense, useEffect, useRef, type RefObject } from "react";
+import {
+  CanvasTexture,
+  LinearFilter,
+  SRGBColorSpace,
+  type Texture,
+  type Group,
+  type MeshBasicMaterial,
+} from "three";
 
-type Point3 = [number, number, number];
+const LOGO_SRC = "/images/logo_alb.svg";
+const COIN_RADIUS = 1.45;
+const COIN_THICKNESS = 0.14;
+const SPIN_SPEED = 0.35;
+const TEXTURE_SIZE = 1024;
 
-function toVectors(points: Point3[]) {
-  return points.map(([x, y, z]) => new Vector3(x, y, z));
-}
+function loadLogoTexture(): Promise<Texture> {
+  return new Promise((resolve, reject) => {
+    const canvas = document.createElement("canvas");
+    canvas.width = TEXTURE_SIZE;
+    canvas.height = TEXTURE_SIZE;
+    const ctx = canvas.getContext("2d");
 
-function boxSegments(
-  width: number,
-  height: number,
-  depth: number,
-  centerY: number,
-): Point3[] {
-  const hw = width / 2;
-  const hh = height / 2;
-  const hd = depth / 2;
-  const y0 = centerY - hh;
-  const y1 = centerY + hh;
+    if (!ctx) {
+      reject(new Error("Canvas 2D context unavailable"));
+      return;
+    }
 
-  return [
-    [-hw, y0, -hd], [hw, y0, -hd],
-    [hw, y0, -hd], [hw, y0, hd],
-    [hw, y0, hd], [-hw, y0, hd],
-    [-hw, y0, hd], [-hw, y0, -hd],
-    [-hw, y1, -hd], [hw, y1, -hd],
-    [hw, y1, -hd], [hw, y1, hd],
-    [hw, y1, hd], [-hw, y1, hd],
-    [-hw, y1, hd], [-hw, y1, -hd],
-    [-hw, y0, -hd], [-hw, y1, -hd],
-    [hw, y0, -hd], [hw, y1, -hd],
-    [hw, y0, hd], [hw, y1, hd],
-    [-hw, y0, hd], [-hw, y1, hd],
-  ];
-}
+    const img = new Image();
+    img.onload = () => {
+      ctx.fillStyle = "#132c50";
+      ctx.beginPath();
+      ctx.arc(TEXTURE_SIZE / 2, TEXTURE_SIZE / 2, TEXTURE_SIZE / 2, 0, Math.PI * 2);
+      ctx.fill();
 
-function diamond(y: number, radius: number, segments = 4): Point3[] {
-  return Array.from({ length: segments + 1 }, (_, i) => {
-    const angle = Math.PI / 4 + (i * Math.PI * 2) / segments;
-    return [Math.cos(angle) * radius, y, Math.sin(angle) * radius];
+      const inset = TEXTURE_SIZE * 0.06;
+      ctx.drawImage(
+        img,
+        inset,
+        inset,
+        TEXTURE_SIZE - inset * 2,
+        TEXTURE_SIZE - inset * 2,
+      );
+
+      const tex = new CanvasTexture(canvas);
+      tex.colorSpace = SRGBColorSpace;
+      tex.minFilter = LinearFilter;
+      tex.magFilter = LinearFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
+      resolve(tex);
+    };
+
+    img.onerror = () => reject(new Error("Failed to load logo texture"));
+    img.src = LOGO_SRC;
   });
 }
 
-function circle(y: number, radius: number, segments = 16): Point3[] {
-  return Array.from({ length: segments + 1 }, (_, i) => {
-    const angle = (i / segments) * Math.PI * 2;
-    return [Math.cos(angle) * radius, y, Math.sin(angle) * radius];
-  });
+function LogoFace({
+  z,
+  flip = false,
+  materialRef,
+}: {
+  z: number;
+  flip?: boolean;
+  materialRef: RefObject<MeshBasicMaterial | null>;
+}) {
+  return (
+    <mesh position={[0, 0, z]} rotation={flip ? [0, Math.PI, 0] : [0, 0, 0]}>
+      <circleGeometry args={[COIN_RADIUS * 0.88, 64]} />
+      <meshBasicMaterial ref={materialRef} toneMapped={false} color="#ffffff" />
+    </mesh>
+  );
 }
 
-function GraduationCapOutline() {
+function SpinningLogoCoin() {
   const groupRef = useRef<Group>(null);
-  const tasselRef = useRef<Group>(null);
+  const frontMaterialRef = useRef<MeshBasicMaterial>(null);
+  const backMaterialRef = useRef<MeshBasicMaterial>(null);
 
-  const paths = useMemo(() => {
-    const boardY = 0.55;
-    const boardR = 1.05;
-    const corner: Point3 = [
-      Math.cos(Math.PI / 4) * boardR,
-      boardY,
-      Math.sin(Math.PI / 4) * boardR,
-    ];
+  useEffect(() => {
+    let disposed = false;
+    let texture: Texture | null = null;
 
-    const skull = boxSegments(1.05, 0.32, 1.05, 0.02);
-    const boardTop = diamond(boardY + 0.04, boardR);
-    const boardBottom = diamond(boardY - 0.02, boardR * 0.92);
-    const button = circle(boardY + 0.07, 0.08, 14);
-    const stem: Point3[] = [[0, 0.18, 0], [0, boardY - 0.05, 0]];
+    loadLogoTexture()
+      .then((loaded) => {
+        if (disposed) {
+          loaded.dispose();
+          return;
+        }
 
-    const tasselCord: Point3[] = [
-      corner,
-      [corner[0], 0.12, corner[2]],
-      [corner[0] + 0.06, -0.22, corner[2] + 0.06],
-    ];
+        texture = loaded;
 
-    const tasselHead = circle(-0.28, 0.1, 10).map(
-      ([x, , z]) =>
-        [x + corner[0] + 0.06, -0.28, z + corner[2] + 0.06] as Point3,
-    );
+        if (frontMaterialRef.current) {
+          frontMaterialRef.current.map = loaded;
+          frontMaterialRef.current.needsUpdate = true;
+        }
 
-    const tasselStrands: Point3[] = Array.from({ length: 8 }, (_, i) => {
-      const angle = (i / 8) * Math.PI * 2;
-      const cx = corner[0] + 0.06;
-      const cz = corner[2] + 0.06;
-      const start: Point3 = [
-        cx + Math.cos(angle) * 0.06,
-        -0.28,
-        cz + Math.sin(angle) * 0.06,
-      ];
-      const end: Point3 = [
-        cx + Math.cos(angle) * 0.09,
-        -0.52,
-        cz + Math.sin(angle) * 0.09,
-      ];
-      return [start, end];
-    }).flat();
+        if (backMaterialRef.current) {
+          backMaterialRef.current.map = loaded;
+          backMaterialRef.current.needsUpdate = true;
+        }
+      })
+      .catch(() => {});
 
-    const diploma: Point3[] = [
-      [-0.55, -0.75, 0.12],
-      [0.55, -0.75, 0.12],
-      [0.55, -1.35, 0.12],
-      [-0.55, -1.35, 0.12],
-      [-0.55, -0.75, 0.12],
-    ];
-
-    const diplomaSeal = circle(0, 0.1, 10).map(
-      ([x, , z]) => [x + 0.38, -1.05, z + 0.12] as Point3,
-    );
-
-    const ribbonLeft: Point3[] = [
-      [0, -0.72, 0.14],
-      [-0.22, -0.62, 0.16],
-      [-0.38, -0.78, 0.16],
-      [-0.2, -0.88, 0.14],
-      [0, -0.72, 0.14],
-    ];
-
-    const ribbonRight: Point3[] = [
-      [0, -0.72, 0.14],
-      [0.22, -0.62, 0.16],
-      [0.38, -0.78, 0.16],
-      [0.2, -0.88, 0.14],
-      [0, -0.72, 0.14],
-    ];
-
-    const scrollRoll: Point3[] = [
-      [-0.62, -0.75, 0.14],
-      [-0.68, -0.75, 0.2],
-      [-0.68, -1.35, 0.2],
-      [-0.62, -1.35, 0.14],
-    ];
-
-  const diplomaLines: Point3[] = [
-      [-0.35, -0.95, 0.13],
-      [0.35, -0.95, 0.13],
-      [-0.35, -1.1, 0.13],
-      [0.35, -1.1, 0.13],
-    ];
-
-    return {
-      skull,
-      boardTop,
-      boardBottom,
-      button,
-      stem,
-      tasselCord,
-      tasselHead,
-      tasselStrands,
-      diploma,
-      diplomaSeal,
-      ribbonLeft,
-      ribbonRight,
-      scrollRoll,
-      diplomaLines,
+    return () => {
+      disposed = true;
+      texture?.dispose();
     };
   }, []);
 
   useFrame(({ clock }) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y =
-        0.45 + Math.sin(clock.elapsedTime * 0.4) * 0.3;
-      groupRef.current.rotation.x = -0.1;
-    }
-    if (tasselRef.current) {
-      tasselRef.current.rotation.z = Math.sin(clock.elapsedTime * 1.6) * 0.22;
+      groupRef.current.rotation.y = clock.elapsedTime * SPIN_SPEED;
     }
   });
 
-  const primary = "#bae6fd";
-  const depth = "#38bdf8";
-  const accent = "#fbbf24";
-  const ribbon = "#f87171";
+  const half = COIN_THICKNESS / 2;
 
   return (
-    <group ref={groupRef} scale={1.05} position={[0, 0.35, 0]}>
-      <Line points={toVectors(paths.skull)} color={primary} lineWidth={2.5} segments />
-      <Line points={toVectors(paths.boardTop)} color={primary} lineWidth={3} />
-      <Line points={toVectors(paths.boardBottom)} color={depth} lineWidth={1.6} transparent opacity={0.6} />
-      <Line points={toVectors(paths.button)} color={depth} lineWidth={2} transparent opacity={0.85} />
-      <Line points={toVectors(paths.stem)} color={depth} lineWidth={1.4} transparent opacity={0.5} />
-
-      <group ref={tasselRef}>
-        <Line points={toVectors(paths.tasselCord)} color={accent} lineWidth={2.2} />
-        <Line points={toVectors(paths.tasselHead)} color={accent} lineWidth={2} />
-        <Line
-          points={toVectors(paths.tasselStrands)}
-          color={accent}
-          lineWidth={1.3}
-          transparent
-          opacity={0.85}
-          segments
+    <group ref={groupRef}>
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[COIN_RADIUS, COIN_RADIUS, COIN_THICKNESS, 96]} />
+        <meshStandardMaterial
+          color="#ffffff"
+          metalness={0.75}
+          roughness={0.28}
         />
-      </group>
+      </mesh>
 
-      <Line points={toVectors(paths.diploma)} color={primary} lineWidth={2.2} />
-      <Line points={toVectors(paths.scrollRoll)} color={depth} lineWidth={1.5} transparent opacity={0.55} />
-      <Line points={toVectors(paths.diplomaLines)} color={depth} lineWidth={1} transparent opacity={0.4} segments />
-      <Line points={toVectors(paths.diplomaSeal)} color={accent} lineWidth={1.6} transparent opacity={0.7} />
-
-      <Line points={toVectors(paths.ribbonLeft)} color={ribbon} lineWidth={1.8} />
-      <Line points={toVectors(paths.ribbonRight)} color={ribbon} lineWidth={1.8} />
+      <LogoFace materialRef={frontMaterialRef} z={half + 0.004} />
+      <LogoFace materialRef={backMaterialRef} z={-half - 0.004} flip />
     </group>
   );
 }
@@ -213,12 +141,9 @@ function Scene() {
   return (
     <>
       <ambientLight intensity={0.7} />
-      <directionalLight position={[4, 6, 4]} intensity={0.6} />
-      <pointLight position={[-3, 2, -2]} intensity={0.45} color="#3b82f6" />
-      <pointLight position={[3, 0, 3]} intensity={0.35} color="#06b6d4" />
-      <Float speed={1.1} rotationIntensity={0.08} floatIntensity={0.45}>
-        <GraduationCapOutline />
-      </Float>
+      <directionalLight position={[2, 3, 6]} intensity={1} />
+      <directionalLight position={[-3, 1, 4]} intensity={0.4} color="#93c5fd" />
+      <SpinningLogoCoin />
     </>
   );
 }
@@ -227,12 +152,21 @@ export function GraduationCapScene() {
   return (
     <div className="h-full w-full" aria-hidden="true">
       <Canvas
-        camera={{ position: [0, 0.1, 4.8], fov: 38 }}
+        camera={{ position: [0, 0, 5], fov: 36 }}
         dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        frameloop="always"
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
+        }}
         style={{ background: "transparent" }}
       >
-        <Scene />
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
       </Canvas>
     </div>
   );

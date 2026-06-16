@@ -2,16 +2,8 @@
 
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useSyncExternalStore } from "react";
+import { useIsMounted } from "@/lib/use-is-mounted";
 import { cn } from "@/lib/utils";
-
-function useIsMounted() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
 
 export function SiteLogo({
   onHero = false,
@@ -29,7 +21,7 @@ export function SiteLogo({
   return (
     <Image
       src={useWhite ? "/images/logo_alb.svg" : "/logo.svg"}
-      alt="POLITEHNICA București"
+      alt="UNST Politehnica București"
       width={size}
       height={size}
       className={cn("shrink-0 object-contain", className)}

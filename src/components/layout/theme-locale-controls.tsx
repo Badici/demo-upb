@@ -1,19 +1,11 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
+import { useIsMounted } from "@/lib/use-is-mounted";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-function useIsMounted() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
 
 export function ThemeToggle({
   className,

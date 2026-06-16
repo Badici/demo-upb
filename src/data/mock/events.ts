@@ -6,7 +6,7 @@ export const events: Event[] = [
     slug: "polifest-2026",
     title: "PoliFEST 2026",
     description:
-      "Cel mai mare festival studențesc de la POLITEHNICA — inovație, tehnologie și distracție pe 3 zile.",
+      "Cel mai mare festival studențesc de la UNST Politehnica București — inovație, tehnologie și distracție pe 3 zile.",
     startDate: "2026-03-26",
     endDate: "2026-03-28",
     location: "Campus Regie, București",
@@ -53,7 +53,7 @@ export const events: Event[] = [
       "Diversitate culturală, mobilitate academică și parteneriate globale.",
     startDate: "2026-05-14",
     endDate: "2026-05-15",
-    location: "Campus POLITEHNICA",
+    location: "Campus UNST Politehnica București",
     category: "cultural",
   },
   {

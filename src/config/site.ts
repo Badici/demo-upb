@@ -1,10 +1,10 @@
 export const siteConfig = {
-  name: "UNSTPB",
+  name: "UNSTB",
   fullName: {
-    ro: "Universitatea Națională de Știință și Tehnologie POLITEHNICA București",
-    en: "National University of Science and Technology POLITEHNICA Bucharest",
+    ro: "Universitatea Națională de Știință și Tehnică Politehnica București",
+    en: "National University of Science and Technology Politehnica Bucharest",
   },
-  shortName: "POLITEHNICA București",
+  shortName: "UNST Politehnica București",
   description: {
     ro: "Cea mai mare școală de ingineri din România — tradiție, inovație și excelență academică de peste 200 de ani.",
     en: "Romania's largest engineering school — over 200 years of tradition, innovation, and academic excellence.",
