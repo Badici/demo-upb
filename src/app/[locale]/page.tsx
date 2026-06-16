@@ -42,9 +42,8 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
 
   const contentService = getContentService();
-  const [announcements, faculties, events, stats] = await Promise.all([
+  const [announcements, events, stats] = await Promise.all([
     contentService.getAnnouncements(),
-    contentService.getFaculties(),
     contentService.getEvents({ limit: 6 }),
     contentService.getStats(),
   ]);
@@ -52,9 +51,9 @@ export default async function HomePage({ params }: Props) {
   return (
     <main id="main-content">
       <HeroSection />
-      <AnnouncementsSection announcements={announcements} />
-      <FacultiesSection faculties={faculties} />
       <EventsSection events={events} />
+      <FacultiesSection />
+      <AnnouncementsSection announcements={announcements} />
       <StatsSection stats={stats} />
     </main>
   );

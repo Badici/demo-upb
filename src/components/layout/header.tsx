@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 const navItems = [
+  { key: "bucharestCenter" as const, href: "/centre-universitar/bucuresti" },
+  { key: "pitestiCenter" as const, href: "/centre-universitar/pitesti" },
   { key: "faculties" as const, href: "#facultati" },
   { key: "events" as const, href: "#evenimente" },
   { key: "announcements" as const, href: "#anunturi" },
@@ -55,21 +57,36 @@ export function Header() {
 
           <div className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
-              <a
-                key={item.key}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  onHero
-                    ? "text-white/70 hover:text-white"
-                    : "text-foreground/70 hover:text-foreground",
-                )}
-                {...(item.href.startsWith("http")
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-              >
-                {t(item.key)}
-              </a>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.key}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors",
+                    onHero
+                      ? "text-white/70 hover:text-white"
+                      : "text-foreground/70 hover:text-foreground",
+                  )}
+                >
+                  {t(item.key)}
+                </Link>
+              ) : (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors",
+                    onHero
+                      ? "text-white/70 hover:text-white"
+                      : "text-foreground/70 hover:text-foreground",
+                  )}
+                  {...(item.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  {t(item.key)}
+                </a>
+              )
             ))}
           </div>
 
@@ -104,19 +121,35 @@ export function Header() {
             )}
           >
             {navItems.map((item) => (
-              <a
-                key={item.key}
-                href={item.href}
-                className={cn(
-                  "rounded-xl px-4 py-3 text-sm font-medium transition-colors",
-                  onHero
-                    ? "text-white/80 hover:bg-white/10"
-                    : "text-foreground/80 hover:bg-white/10",
-                )}
-                onClick={() => setMobileOpen(false)}
-              >
-                {t(item.key)}
-              </a>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.key}
+                  href={item.href}
+                  className={cn(
+                    "rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                    onHero
+                      ? "text-white/80 hover:bg-white/10"
+                      : "text-foreground/80 hover:bg-white/10",
+                  )}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t(item.key)}
+                </Link>
+              ) : (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  className={cn(
+                    "rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                    onHero
+                      ? "text-white/80 hover:bg-white/10"
+                      : "text-foreground/80 hover:bg-white/10",
+                  )}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t(item.key)}
+                </a>
+              )
             ))}
             <LocaleSwitcher className="mt-2 sm:hidden" onHero={onHero} />
           </div>

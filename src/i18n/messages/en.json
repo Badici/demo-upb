@@ -5,6 +5,8 @@
   },
   "Navigation": {
     "home": "Home",
+    "bucharestCenter": "Bucharest Center",
+    "pitestiCenter": "Pitesti Center",
     "faculties": "Faculties",
     "events": "Events",
     "announcements": "Announcements",
@@ -17,8 +19,8 @@
     "title": "The future of engineering",
     "titleHighlight": "starts here",
     "subtitle": "UNST Politehnica Bucharest — over 200 years of tradition, innovation, and academic excellence. Romania's largest engineering school.",
-    "ctaPrimary": "Admission 2026",
-    "ctaSecondary": "Explore faculties",
+    "ctaBucharest": "Bucharest University Center",
+    "ctaPitesti": "Pitesti University Center",
     "stats": {
       "students": "students",
       "faculties": "faculties",
@@ -47,8 +49,8 @@
     }
   },
   "Faculties": {
-    "title": "Faculties",
-    "subtitle": "15 faculties of excellence in engineering and applied sciences",
+    "title": "University Center",
+    "subtitle": "Choose Bucharest or Pitesti to view the full faculty list for each center.",
     "students": "students",
     "programs": "programs",
     "explore": "Explore"

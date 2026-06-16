@@ -5,6 +5,8 @@
   },
   "Navigation": {
     "home": "Acasă",
+    "bucharestCenter": "Centrul București",
+    "pitestiCenter": "Centrul Pitești",
     "faculties": "Facultăți",
     "events": "Evenimente",
     "announcements": "Anunțuri",
@@ -17,8 +19,8 @@
     "title": "Viitorul ingineriei",
     "titleHighlight": "începe aici",
     "subtitle": "UNST Politehnica București — peste 200 de ani de tradiție, inovație și excelență academică. Cea mai mare școală de ingineri din România.",
-    "ctaPrimary": "Admitere 2026",
-    "ctaSecondary": "Descoperă facultățile",
+    "ctaBucharest": "Centrul Universitar București",
+    "ctaPitesti": "Centrul Universitar Pitești",
     "stats": {
       "students": "studenți",
       "faculties": "facultăți",
@@ -47,8 +49,8 @@
     }
   },
   "Faculties": {
-    "title": "Facultăți",
-    "subtitle": "15 facultăți de excelență în inginerie și științe aplicate",
+    "title": "Centrul Universitar",
+    "subtitle": "Alege București sau Pitești și vezi lista completă a facultăților din fiecare centru.",
     "students": "studenți",
     "programs": "programe",
     "explore": "Explorează"

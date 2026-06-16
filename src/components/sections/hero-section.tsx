@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/container";
 import { FadeInView } from "@/components/animations/fade-in-view";
 import { GraduationCapHero } from "@/components/3d/graduation-cap-hero";
 import { Badge } from "@/components/ui/badge";
-import { siteConfig } from "@/config/site";
+import { Link } from "@/i18n/routing";
 
 const heroStats = [
   { value: "30K+", labelKey: "students" as const },
@@ -53,27 +53,25 @@ export function HeroSection() {
             </FadeInView>
 
             <FadeInView delay={0.4}>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href={siteConfig.links.admission}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(buttonVariants({ variant: "primary", size: "lg" }))}
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/centre-universitar/bucuresti"
+                  className={cn(buttonVariants({ variant: "primary", size: "md" }))}
                 >
-                  {t("ctaPrimary")}
+                  {t("ctaBucharest")}
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
-                <a
-                  href="#facultati"
+                </Link>
+                <Link
+                  href="/centre-universitar/pitesti"
                   className={cn(
-                    buttonVariants({ variant: "secondary", size: "lg" }),
+                    buttonVariants({ variant: "secondary", size: "md" }),
                     "text-white hover:text-white",
                   )}
                 >
-                  {t("ctaSecondary")}
-                </a>
+                  {t("ctaPitesti")}
+                </Link>
               </div>
             </FadeInView>
 
