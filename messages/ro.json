@@ -1,0 +1,18 @@
+{
+  "Home": {
+    "badge": "Universitate Națională de Știință și Tehnică Politehnica București",
+    "title": "Viitorul <hl>ingineriei</hl> începe aici",
+    "subtitle": "Descoperiți facultățile și programele de studiu de excelență, disponibile în centrele noastre universitare din București și Pitești.",
+    "ctaBucharest": "Centru Universitar București",
+    "ctaPitesti": "Centru Universitar Pitești"
+  },
+  "Common": {
+    "toggleTheme": "Schimbă tema",
+    "language": "Limbă",
+    "romanian": "Română",
+    "english": "Engleză",
+    "menu": "Meniu",
+    "openMenu": "Deschide meniul",
+    "closeMenu": "Închide meniul"
+  }
+}

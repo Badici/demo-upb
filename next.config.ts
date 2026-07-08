@@ -1,31 +1,42 @@
-import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
+import { withPayload } from '@payloadcms/next/withPayload'
+import createNextIntlPlugin from 'next-intl/plugin'
+import type { NextConfig } from 'next'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+const __filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(__filename)
 
-const securityHeaders = [
-  { key: "X-DNS-Prefetch-Control", value: "on" },
-  { key: "X-Frame-Options", value: "DENY" },
-  { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
-  },
-];
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  poweredByHeader: false,
-  reactStrictMode: true,
-  async headers() {
-    return [
+  images: {
+    localPatterns: [
       {
-        source: "/(.*)",
-        headers: securityHeaders,
+        pathname: '/api/media/file/**',
       },
-    ];
+      {
+        pathname: '/images/**',
+      },
+      {
+        pathname: '/**',
+      },
+    ],
   },
-};
+  webpack: (webpackConfig) => {
+    webpackConfig.resolve.extensionAlias = {
+      '.cjs': ['.cts', '.cjs'],
+      '.js': ['.ts', '.tsx', '.js', '.jsx'],
+      '.mjs': ['.mts', '.mjs'],
+    }
 
-export default withNextIntl(nextConfig);
+    return webpackConfig
+  },
+  turbopack: {
+    root: path.resolve(dirname),
+  },
+}
+
+export default withPayload(withNextIntl(nextConfig), {
+  devBundleServerPackages: false,
+})

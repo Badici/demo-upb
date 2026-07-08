@@ -1,141 +1,58 @@
-# POLITEHNICA București — Platformă Modernă
+# UNST Politehnica București
 
-Revamp modern al platformei oficiale [upb.ro](https://upb.ro), construit cu Next.js 16, TypeScript, Tailwind CSS v4, Framer Motion și React Three Fiber.
+Next.js (App Router) + [Payload CMS](https://payloadcms.com) with PostgreSQL, multilingual (RO/EN) frontend, and dark/light theme.
 
-## Caracteristici
+## Stack
 
-- **Design premium** — glassmorphism unificat, tipografie Rubik, animații fluide
-- **Multilingv** — Română (implicit) și Engleză via `next-intl`
-- **Dark/Light mode** — comutare temă cu `next-themes`
-- **3D Hero** — tocă de absolvire 3D animată (React Three Fiber)
-- **Arhitectură scalabilă** — servicii abstracte pentru CMS/DAM viitor
-- **Performanță** — Server Components by default, lazy loading pentru 3D
-- **Docker** — build multi-stage pentru producție
-- **CI/CD** — GitHub Actions (lint, typecheck, build)
+- **Next.js 16** (App Router, Turbopack) + **React 19**
+- **Payload 3** headless CMS (admin at `/admin`, REST/GraphQL under `/api`)
+- **PostgreSQL** via `@payloadcms/db-postgres`
+- **next-intl** for i18n — locales `ro` (default) and `en`, prefixed routes (`/ro`, `/en`)
+- **next-themes** for dark/light mode (class strategy)
+- **Tailwind CSS v4**
+- **Rubik** font via `next/font`
 
-## Stack Tehnologic
+## Getting started
 
-| Tehnologie | Rol |
-|---|---|
-| Next.js 16 (App Router) | Framework |
-| TypeScript | Type safety |
-| Tailwind CSS v4 | Styling |
-| Framer Motion | Animații UI |
-| React Three Fiber | Scene 3D |
-| next-intl | Internaționalizare |
-| CVA + clsx + tailwind-merge | Design system |
-| Docker + Makefile | Containerizare & DX |
+1. Copy env and set a secret:
+   ```bash
+   cp .env.example .env
+   # PAYLOAD_SECRET is required — generate one with:
+   openssl rand -hex 32
+   ```
+2. Start PostgreSQL (Docker):
+   ```bash
+   docker compose up -d
+   ```
+3. Install deps and run:
+   ```bash
+   npm install
+   npm run dev
+   ```
+4. Open:
+   - Frontend: http://localhost:3000 (redirects to `/ro`)
+   - Payload admin: http://localhost:3000/admin (create the first user)
 
-## Structură Proiect
+## Project structure
 
 ```
 src/
-├── app/                    # Rute App Router
-│   └── [locale]/           # Rute localizate (ro, en)
-├── components/
-│   ├── ui/                 # Primitive UI (Button, GlassCard, Badge)
-│   ├── layout/             # Header, Footer, navigare
-│   ├── sections/           # Secțiuni homepage
-│   ├── animations/         # FadeInView, Stagger, Counter
-│   └── 3d/                 # Scene Three.js
-├── services/               # CMS/DAM adapters
-├── data/mock/              # Date mock (temporar)
-├── i18n/                   # Mesaje ro/en
-├── types/                  # Tipuri domain
-└── config/                 # Configurare app
+  app/
+    (frontend)/[locale]/   # Public, localized site (layout, globals.css, pages)
+    (payload)/             # Payload admin + API (not localized)
+  collections/             # Payload collections (Users, Media)
+  components/              # UI components (theme toggle, locale switcher, ...)
+  i18n/                    # next-intl routing, navigation, request config
+  lib/                     # fonts, cn() helper
+  providers/               # ThemeProvider
+  payload.config.ts        # Payload configuration
+messages/                  # ro.json, en.json translation catalogs
 ```
 
-## Comenzi Rapide
+## Useful scripts
 
-### Cu Makefile
-
-```bash
-make install      # Instalează dependențe
-make dev          # Server dezvoltare (http://localhost:3000)
-make build        # Build producție
-make start        # Pornește server producție
-make prod         # Build + start
-make lint         # ESLint
-make typecheck    # Verificare TypeScript
-make format       # Prettier
-make clean        # Curăță .next și node_modules
-make docker-build # Build imagine Docker
-make docker-up    # Pornește container producție
-make docker-down  # Oprește containere
-make docker-dev   # Dezvoltare în Docker
-```
-
-### Cu npm
-
-```bash
-npm install
-npm run dev
-npm run build
-npm run start
-npm run lint
-npm run typecheck
-```
-
-## Variabile de Mediu
-
-Copiază `.env.example` în `.env.local`:
-
-```bash
-cp .env.example .env.local
-```
-
-| Variabilă | Descriere | Default |
-|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | URL public site | `http://localhost:3000` |
-| `CONTENT_PROVIDER` | Provider conținut | `mock` |
-| `MEDIA_PROVIDER` | Provider media | `mock` |
-
-## Docker
-
-**Producție:**
-```bash
-make docker-build
-make docker-up
-```
-
-**Dezvoltare:**
-```bash
-make docker-dev
-```
-
-## Pagini
-
-| Rută | Descriere |
-|---|---|
-| `/ro` | Homepage în română |
-| `/en` | Homepage în engleză |
-
-## Secțiuni Homepage
-
-1. **Hero** — layout cinematic, fundal animat, CTA-uri, statistici glass
-2. **3D Graduation Cap** — tocă de absolvire 3D rotativă
-3. **Buletin Anunțuri** — filtrare pe tag-uri, carduri glass
-4. **Facultăți** — 12 facultăți cu carduri interactive
-5. **Evenimente** — festivaluri și conferințe academice
-6. **Statistici** — contoare animate
-7. **Footer** — footer instituțional multi-coloană
-
-## Cursor Agent Rules
-
-Reguli AI în `.cursor/rules/` pentru:
-- Arhitectură, componente, design system
-- Accesibilitate, animații, performanță
-- i18n, styling, Docker, deployment
-- SEO, securitate, CMS/DAM integration
-
-## Integrări Viitoare
-
-Proiectul este pregătit pentru:
-- **CMS** — Strapi, Sanity (via `ContentService` adapter)
-- **DAM** — Cloudinary, Imgix (via `MediaService` adapter)
-- **Autentificare** — route groups `(admin)`
-- **News/Events** — servicii abstracte existente
-
-## Licență
-
-Proiect demonstrativ pentru UNSTPB / POLITEHNICA București.
+- `npm run dev` — start dev server
+- `npm run build` / `npm start` — production build / serve
+- `npm run generate:types` — regenerate `src/payload-types.ts` from collections
+- `npm run generate:importmap` — regenerate Payload admin import map
+- `npm run lint` — ESLint

@@ -1,0 +1,18 @@
+{
+  "Home": {
+    "badge": "National University of Science and Technology Politehnica Bucharest",
+    "title": "The future of <hl>engineering</hl> starts here",
+    "subtitle": "Discover our faculties and excellence study programmes, available at our university centres in Bucharest and Pitești.",
+    "ctaBucharest": "Bucharest University Centre",
+    "ctaPitesti": "Pitești University Centre"
+  },
+  "Common": {
+    "toggleTheme": "Toggle theme",
+    "language": "Language",
+    "romanian": "Romanian",
+    "english": "English",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  }
+}
