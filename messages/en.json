@@ -4,7 +4,136 @@
     "title": "The future of <hl>engineering</hl> starts here",
     "subtitle": "Discover our faculties and excellence study programmes, available at our university centres in Bucharest and Pitești.",
     "ctaBucharest": "Bucharest University Centre",
-    "ctaPitesti": "Pitești University Centre"
+    "ctaPitesti": "Pitești University Centre",
+    "announcementsEyebrow": "News",
+    "announcementsTitle": "Announcements",
+    "announcementsLabel": "Announcements carousel",
+    "announcementsPrev": "Previous announcement",
+    "announcementsNext": "Next announcement",
+    "announcementsGoTo": "Go to announcement: {title}"
+  },
+  "Anniversary": {
+    "eyebrow": "1818 – 2018",
+    "headline": "Politehnica University of Bucharest celebrated 200 years of tradition and technical innovation",
+    "cta": "Discover our history",
+    "videoTitle": "Politehnica Bucharest 200 years anniversary video"
+  },
+  "History": {
+    "title": "The university's history",
+    "subtitle": "Over 200 years of engineering tradition and innovation.",
+    "comingSoon": "The content of this page will be available soon."
+  },
+  "Events": {
+    "eyebrow": "Calendar",
+    "title": "Events"
+  },
+  "Partners": {
+    "eyebrow": "Collaborations",
+    "title": "International affiliations"
+  },
+  "Faculties": {
+    "eyebrow": "Education",
+    "title": "Faculties",
+    "description": "Discover all faculties across our university centres in Bucharest and Pitești.",
+    "centers": {
+      "bucharest": "Bucharest University Centre",
+      "pitesti": "Pitești University Centre"
+    }
+  },
+  "News": {
+    "eyebrow": "Latest",
+    "title": "Latest news",
+    "description": "Stay up to date with the latest news from the Politehnica community.",
+    "viewAll": "View all news",
+    "readMore": "Read more",
+    "backToNews": "Back to news",
+    "allNewsTitle": "News",
+    "allNewsSubtitle": "All the latest from the Politehnica Bucharest community.",
+    "relatedTitle": "Related news",
+    "publishedOn": "Published on",
+    "empty": "There are no news items yet.",
+    "category": {
+      "general": "General",
+      "admitere": "Admission",
+      "cercetare": "Research",
+      "evenimente": "Events",
+      "studenti": "Students",
+      "parteneriate": "Partnerships"
+    }
+  },
+  "ProspectiveStudents": {
+    "title": "Prospective students",
+    "studentsTitle": "Students",
+    "viewMore": "View more",
+    "cards": {
+      "events": {
+        "title": "Politehnica Bucharest Events"
+      },
+      "prep": {
+        "title": "Admission Preparation"
+      },
+      "simulation": {
+        "title": "Admission Simulation"
+      },
+      "theatre": {
+        "title": "Theatre Shows at Politehnica Bucharest"
+      }
+    }
+  },
+  "StudentServices": {
+    "eyebrow": "Students",
+    "title": "Student services",
+    "viewMore": "Learn more",
+    "items": {
+      "alumni": {
+        "title": "Alumni",
+        "description": "Politehnica University of Bucharest is pleased to announce the launch of the UPB Alumni Community platform — an online networking platform."
+      },
+      "shop": {
+        "title": "Shop",
+        "description": "The UPB Shop is here for everyone in the academic community who wants to purchase a personalised product featuring the University's insignia."
+      },
+      "polijobs": {
+        "title": "PoliJobs",
+        "description": "The only Employment Placement Agency launched by a university in Romania. The agency offers free services exclusively for UPB students and graduates."
+      },
+      "ccvsar": {
+        "title": "CCVSAR Volunteering Centre",
+        "description": "The Centre for Culture, Volunteering, Sport and Recreational Activities was created to combine students' needs with society's interests, encouraging them to take part in activities that build the foundation for personal, professional and social achievements."
+      },
+      "upbizz": {
+        "title": "UPBIZZ Entrepreneurship Centre",
+        "description": "The entrepreneurship centre is dedicated to UPB students, with a team determined to create an interactive educational journey for young entrepreneurs, offering them experiences, success stories, knowledge and a lot of passion."
+      },
+      "ccoc": {
+        "title": "CCOC Counselling Centre",
+        "description": "Come to CCOC if you want to discover your psychological profile, interests and professional aptitudes, learn more about educational paths and the specialisations offered by UPB, or validate your choices — we support you in making the best decisions!"
+      }
+    }
+  },
+  "AcademicResources": {
+    "eyebrow": "Research & education",
+    "title": "Academic resources",
+    "description": "Publishing, library services, scientific events and publications that support research activity at UPB.",
+    "viewMore": "Learn more",
+    "items": {
+      "press": {
+        "title": "Politehnica PRESS Publishing House",
+        "description": "The publishing house, with a scientific profile, promotes the results of research activity carried out at UPB."
+      },
+      "library": {
+        "title": "Central Library",
+        "description": "1,340,762 library units (books, periodicals, special collections, standards, audiovisual materials)."
+      },
+      "events": {
+        "title": "Event Booking",
+        "description": "This service supports those who wish to organise scientific events within UPB."
+      },
+      "bulletin": {
+        "title": "Scientific Bulletin",
+        "description": "Disseminates the results of scientific research activity at UPB to academic communities at home and abroad."
+      }
+    }
   },
   "Common": {
     "toggleTheme": "Toggle theme",
@@ -14,5 +143,29 @@
     "menu": "Menu",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
+  },
+  "Footer": {
+    "tagline": "National University of Science and Technology Politehnica Bucharest — tradition, innovation and excellence in engineering education.",
+    "quickLinks": "Quick links",
+    "resources": "Resources",
+    "contact": "Contact",
+    "addressLabel": "Address",
+    "address": "313 Splaiul Independenței, Bucharest 060042, Romania",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "followUs": "Follow us",
+    "linkAdmission": "Admission",
+    "linkFaculties": "Faculties",
+    "linkResearch": "Research",
+    "linkStudents": "Students",
+    "linkLibrary": "Library",
+    "linkCareers": "Careers",
+    "linkNews": "News",
+    "linkContact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "cookies": "Cookie Policy",
+    "gdpr": "GDPR",
+    "rights": "All rights reserved."
   }
 }

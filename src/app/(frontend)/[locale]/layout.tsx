@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { rubik } from "@/lib/fonts";
 import "./globals.css";
 
@@ -48,8 +49,11 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
-            <SiteHeader />
-            {children}
+            <div className="flex min-h-dvh flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

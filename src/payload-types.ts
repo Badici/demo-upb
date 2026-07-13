@@ -69,6 +69,11 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    announcements: Announcement;
+    news: News;
+    events: Event;
+    partners: Partner;
+    faculties: Faculty;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +83,11 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
+    faculties: FacultiesSelect<false> | FacultiesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -163,6 +173,134 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "announcements".
+ */
+export interface Announcement {
+  id: number;
+  /**
+   * Folosit pentru accesibilitate și identificare în admin.
+   */
+  title: string;
+  banner: number | Media;
+  link: {
+    type: 'internal' | 'external';
+    /**
+     * Ex: /ro/admitere
+     */
+    internalPath?: string | null;
+    /**
+     * Ex: https://upb.ro
+     */
+    externalUrl?: string | null;
+  };
+  startDate: string;
+  endDate: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: number;
+  title: string;
+  /**
+   * Se generează automat din titlu dacă e lăsat gol.
+   */
+  slug?: string | null;
+  /**
+   * Text scurt afișat în listă și pe homepage.
+   */
+  excerpt: string;
+  coverImage: number | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category?: ('general' | 'admitere' | 'cercetare' | 'evenimente' | 'studenti' | 'parteneriate') | null;
+  publishedAt: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  /**
+   * Folosit pentru accesibilitate (text alternativ).
+   */
+  title: string;
+  banner: number | Media;
+  /**
+   * Ex: https://...
+   */
+  link: string;
+  eventDate: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  /**
+   * Numele organizației (folosit și ca text alternativ pentru logo).
+   */
+  name: string;
+  logo: number | Media;
+  /**
+   * Opțional. Ex: https://...
+   */
+  link?: string | null;
+  /**
+   * Ordinea de afișare (crescător).
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculties".
+ */
+export interface Faculty {
+  id: number;
+  name: string;
+  /**
+   * Ex: FAC, FIIR, FAIMA
+   */
+  abbreviation: string;
+  logo: number | Media;
+  /**
+   * Ex: https://...
+   */
+  website: string;
+  universityCenter: 'bucharest' | 'pitesti';
+  /**
+   * Ordinea de afișare în cadrul centrului universitar (crescător).
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -192,6 +330,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'announcements';
+        value: number | Announcement;
+      } | null)
+    | ({
+        relationTo: 'news';
+        value: number | News;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: number | Partner;
+      } | null)
+    | ({
+        relationTo: 'faculties';
+        value: number | Faculty;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -274,6 +432,78 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "announcements_select".
+ */
+export interface AnnouncementsSelect<T extends boolean = true> {
+  title?: T;
+  banner?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        internalPath?: T;
+        externalUrl?: T;
+      };
+  startDate?: T;
+  endDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  coverImage?: T;
+  content?: T;
+  category?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  banner?: T;
+  link?: T;
+  eventDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  link?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculties_select".
+ */
+export interface FacultiesSelect<T extends boolean = true> {
+  name?: T;
+  abbreviation?: T;
+  logo?: T;
+  website?: T;
+  universityCenter?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

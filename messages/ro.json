@@ -4,7 +4,136 @@
     "title": "Viitorul <hl>ingineriei</hl> începe aici",
     "subtitle": "Descoperiți facultățile și programele de studiu de excelență, disponibile în centrele noastre universitare din București și Pitești.",
     "ctaBucharest": "Centru Universitar București",
-    "ctaPitesti": "Centru Universitar Pitești"
+    "ctaPitesti": "Centru Universitar Pitești",
+    "announcementsEyebrow": "Noutăți",
+    "announcementsTitle": "Anunțuri",
+    "announcementsLabel": "Carusel anunțuri",
+    "announcementsPrev": "Anunțul anterior",
+    "announcementsNext": "Anunțul următor",
+    "announcementsGoTo": "Mergi la anunțul: {title}"
+  },
+  "Anniversary": {
+    "eyebrow": "1818 – 2018",
+    "headline": "Universitatea Politehnica din București a aniversat 200 de ani de tradiție și inovații tehnice",
+    "cta": "Descoperă istoria",
+    "videoTitle": "Video aniversar 200 de ani Politehnica București"
+  },
+  "History": {
+    "title": "Istoria universității",
+    "subtitle": "Peste 200 de ani de tradiție și inovație inginerească.",
+    "comingSoon": "Conținutul acestei pagini va fi disponibil în curând."
+  },
+  "Events": {
+    "eyebrow": "Calendar",
+    "title": "Evenimente"
+  },
+  "Partners": {
+    "eyebrow": "Colaborări",
+    "title": "Afilieri internaționale"
+  },
+  "Faculties": {
+    "eyebrow": "Învățământ",
+    "title": "Facultăți",
+    "description": "Descoperiți toate facultățile din centrele universitare București și Pitești.",
+    "centers": {
+      "bucharest": "Centrul Universitar București",
+      "pitesti": "Centrul Universitar Pitești"
+    }
+  },
+  "News": {
+    "eyebrow": "Actualitate",
+    "title": "Ultimele știri",
+    "description": "Fii la curent cu cele mai recente noutăți din comunitatea Politehnica.",
+    "viewAll": "Vezi toate știrile",
+    "readMore": "Citește mai mult",
+    "backToNews": "Înapoi la știri",
+    "allNewsTitle": "Știri",
+    "allNewsSubtitle": "Toate noutățile din comunitatea Politehnica București.",
+    "relatedTitle": "Știri similare",
+    "publishedOn": "Publicat pe",
+    "empty": "Nu există știri momentan.",
+    "category": {
+      "general": "General",
+      "admitere": "Admitere",
+      "cercetare": "Cercetare",
+      "evenimente": "Evenimente",
+      "studenti": "Studenți",
+      "parteneriate": "Parteneriate"
+    }
+  },
+  "ProspectiveStudents": {
+    "title": "Viitori studenți",
+    "studentsTitle": "Studenți",
+    "viewMore": "Vezi mai mult",
+    "cards": {
+      "events": {
+        "title": "Evenimente Politehnica București"
+      },
+      "prep": {
+        "title": "Pregătire Admitere"
+      },
+      "simulation": {
+        "title": "Simulare Admitere"
+      },
+      "theatre": {
+        "title": "Spectacole de Teatru la Politehnica București"
+      }
+    }
+  },
+  "StudentServices": {
+    "eyebrow": "Studenți",
+    "title": "Servicii pentru studenți",
+    "viewMore": "Află mai mult",
+    "items": {
+      "alumni": {
+        "title": "Alumni",
+        "description": "Universitatea POLITEHNICA din București este bucuroasă să anunțe lansarea Platformei Comunității Alumni UPB (UPB Alumni Community) — o platformă online de networking."
+      },
+      "shop": {
+        "title": "Magazin",
+        "description": "Magazinul UPB vine în întâmpinarea tuturor celor care aparțin comunității academice și care doresc să-și achiziționeze un produs personalizat cu însemnele Universității."
+      },
+      "polijobs": {
+        "title": "PoliJobs",
+        "description": "Singura Agenție de Plasare a Forței de Muncă lansată de către o universitate din România. Agenția oferă servicii gratuite pentru studenții și absolvenții U.P.B și se adresează exclusiv acestora."
+      },
+      "ccvsar": {
+        "title": "Centru Voluntariat CCVSAR",
+        "description": "Centrul de Cultură, Voluntariat, Sport și Activități Recreative a fost creat pentru a îmbina nevoile studenților cu interesele societății, încurajându-i să participe la activități menite să creeze premisele realizării unor performanțe personale, profesionale și sociale."
+      },
+      "upbizz": {
+        "title": "Centru Antreprenoriat UPBIZZ",
+        "description": "Centrul de antreprenoriat este dedicat studenților UPB, are o echipă hotărâtă să creeze un parcurs educațional interactiv pentru tineri antreprenori, punând la dispoziția acestora experiențe, povești de succes, cunoștințe și multă pasiune."
+      },
+      "ccoc": {
+        "title": "Centru Consiliere CCOC",
+        "description": "Vino la CCOC dacă vrei să îți cunoști profilul psihologic, interesele și aptitudinile profesionale, dacă vrei să afli mai multe despre rutele educaționale și specializările oferite de UPB sau dacă vrei să îți validezi alegerile — te sprijinim să iei cele mai bune decizii!"
+      }
+    }
+  },
+  "AcademicResources": {
+    "eyebrow": "Cercetare & educație",
+    "title": "Resurse academice",
+    "description": "Editură, bibliotecă, evenimente științifice și publicații care susțin activitatea de cercetare din UPB.",
+    "viewMore": "Află mai mult",
+    "items": {
+      "press": {
+        "title": "Editura Politehnica PRESS",
+        "description": "Rolul editurii, cu profil științific, este acela de a promova rezultatele activității de cercetare desfășurate în UPB."
+      },
+      "library": {
+        "title": "Biblioteca Centrală",
+        "description": "1.340.762 unități biblioteconomice (cărți, periodice, colecții speciale, standarde, materiale audio-vizuale)."
+      },
+      "events": {
+        "title": "Contractare Evenimente",
+        "description": "Serviciul vine în întâmpinarea celor care doresc să organizeze evenimente cu caracter științific în cadrul UPB."
+      },
+      "bulletin": {
+        "title": "Buletin Științific",
+        "description": "Mediatizează în cercurile universitare din țară și din străinătate rezultatele activității de cercetare științifică din UPB."
+      }
+    }
   },
   "Common": {
     "toggleTheme": "Schimbă tema",
@@ -14,5 +143,29 @@
     "menu": "Meniu",
     "openMenu": "Deschide meniul",
     "closeMenu": "Închide meniul"
+  },
+  "Footer": {
+    "tagline": "Universitate Națională de Știință și Tehnică Politehnica București — tradiție, inovație și excelență în educația inginerească.",
+    "quickLinks": "Linkuri rapide",
+    "resources": "Resurse",
+    "contact": "Contact",
+    "addressLabel": "Adresă",
+    "address": "Splaiul Independenței 313, București 060042, România",
+    "phoneLabel": "Telefon",
+    "emailLabel": "Email",
+    "followUs": "Urmărește-ne",
+    "linkAdmission": "Admitere",
+    "linkFaculties": "Facultăți",
+    "linkResearch": "Cercetare",
+    "linkStudents": "Studenți",
+    "linkLibrary": "Bibliotecă",
+    "linkCareers": "Cariere",
+    "linkNews": "Noutăți",
+    "linkContact": "Contact",
+    "privacy": "Politica de confidențialitate",
+    "terms": "Termeni și condiții",
+    "cookies": "Politica de cookie-uri",
+    "gdpr": "GDPR",
+    "rights": "Toate drepturile rezervate."
   }
 }
