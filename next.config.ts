@@ -1,4 +1,3 @@
-import { withPayload } from '@payloadcms/next/withPayload'
 import createNextIntlPlugin from 'next-intl/plugin'
 import type { NextConfig } from 'next'
 import path from 'path'
@@ -13,30 +12,28 @@ const nextConfig: NextConfig = {
   images: {
     localPatterns: [
       {
-        pathname: '/api/media/file/**',
+        pathname: '/demo/**',
       },
       {
         pathname: '/images/**',
+      },
+      {
+        pathname: '/logo-facultati/**',
+      },
+      {
+        pathname: '/hero-sequence/**',
+      },
+      {
+        pathname: '/sketch-assets/**',
       },
       {
         pathname: '/**',
       },
     ],
   },
-  webpack: (webpackConfig) => {
-    webpackConfig.resolve.extensionAlias = {
-      '.cjs': ['.cts', '.cjs'],
-      '.js': ['.ts', '.tsx', '.js', '.jsx'],
-      '.mjs': ['.mts', '.mjs'],
-    }
-
-    return webpackConfig
-  },
   turbopack: {
     root: path.resolve(dirname),
   },
 }
 
-export default withPayload(withNextIntl(nextConfig), {
-  devBundleServerPackages: false,
-})
+export default withNextIntl(nextConfig)

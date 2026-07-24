@@ -11,6 +11,12 @@
   --accent: #3b82f6;
   --muted: #64748b;
   --border: rgba(10, 31, 68, 0.12);
+  --scrollbar-size: 8px;
+  --scrollbar-radius: 0.75rem;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: var(--primary);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--primary) 82%, #000000);
+  --scrollbar-glow: color-mix(in srgb, var(--primary) 22%, transparent);
 }
 
 .dark {
@@ -21,6 +27,8 @@
   --accent: #60a5fa;
   --muted: #94a3b8;
   --border: rgba(255, 255, 255, 0.12);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--primary) 78%, #ffffff);
+  --scrollbar-glow: color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 @theme inline {
@@ -32,15 +40,80 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --font-sans: var(--font-rubik);
+
+  /* Semantic typography scale (project-wide tokens) */
+  --text-display: clamp(2.75rem, 1.85rem + 3.2vw, 5.5rem);
+  --text-page-title: clamp(2.35rem, 1.75rem + 2.4vw, 4.25rem);
+  --text-section-title: clamp(1.875rem, 1.55rem + 1.4vw, 3.25rem);
+  --text-subsection-title: clamp(1.5rem, 1.3rem + 0.85vw, 2.25rem);
+  --text-card-title: clamp(1.125rem, 1.05rem + 0.3vw, 1.5rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
 }
 
 html {
   color-scheme: light dark;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+html::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+html::-webkit-scrollbar-button,
+html::-webkit-scrollbar-button:single-button,
+html::-webkit-scrollbar-button:vertical:start:decrement,
+html::-webkit-scrollbar-button:vertical:end:increment,
+html::-webkit-scrollbar-button:horizontal:start:decrement,
+html::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  margin-block: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--scrollbar-thumb) 0%,
+    color-mix(in srgb, var(--scrollbar-thumb) 72%, var(--background)) 100%
+  );
+  border-radius: var(--scrollbar-radius);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--scrollbar-thumb) 35%, transparent),
+    0 2px 10px var(--scrollbar-glow);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--scrollbar-thumb-hover) 0%,
+    color-mix(in srgb, var(--scrollbar-thumb-hover) 70%, var(--background)) 100%
+  );
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--scrollbar-thumb-hover) 45%, transparent),
+    0 4px 14px var(--scrollbar-glow);
+}
+
+html::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-thumb-hover);
+}
+
+html::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 @keyframes marquee-scroll {

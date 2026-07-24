@@ -1,8 +1,12 @@
 {
   "Home": {
-    "badge": "National University of Science and Technology Politehnica Bucharest",
-    "title": "The future of <hl>engineering</hl> starts here",
-    "subtitle": "Discover our faculties and excellence study programmes, available at our university centres in Bucharest and Pitești.",
+    "badge": "200+ years of tradition · Global innovation",
+    "title": "The university <hl>shaping</hl> engineering's future",
+    "subtitle": "Discover our faculties, programmes and centres of excellence in Bucharest and Pitești.",
+    "tagline": "Bucharest and Pitești · excellence in engineering education",
+    "scrollHint": "Scroll",
+    "heroMediaCaption": "Politehnica campus",
+    "heroMediaLabel": "Politehnica campus animation, controlled by scrolling",
     "ctaBucharest": "Bucharest University Centre",
     "ctaPitesti": "Pitești University Centre",
     "announcementsEyebrow": "News",
@@ -25,7 +29,10 @@
   },
   "Events": {
     "eyebrow": "Calendar",
-    "title": "Events"
+    "title": "Events",
+    "viewEvent": "View event",
+    "scrollHint": "Auto-scroll · pause on hover",
+    "scrollHintStatic": "Horizontal scroll · swipe"
   },
   "Partners": {
     "eyebrow": "Collaborations",
@@ -43,7 +50,7 @@
   "News": {
     "eyebrow": "Latest",
     "title": "Latest news",
-    "description": "Stay up to date with the latest news from the Politehnica community.",
+    "description": "Stay up to date with the latest news and announcements from the Politehnica community.",
     "viewAll": "View all news",
     "readMore": "Read more",
     "backToNews": "Back to news",
@@ -52,6 +59,14 @@
     "relatedTitle": "Related news",
     "publishedOn": "Published on",
     "empty": "There are no news items yet.",
+    "newsBadge": "News",
+    "announcementBadge": "Announcement",
+    "announcementExcerpt": "Official details and information from the university community.",
+    "prevFeatured": "Previous preview",
+    "nextFeatured": "Next preview",
+    "autoHint": "Auto-rotate · 10s",
+    "manualHint": "Manual navigation",
+    "featuredTabs": "News previews",
     "category": {
       "general": "General",
       "admitere": "Admission",

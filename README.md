@@ -1,58 +1,27 @@
-# UNST Politehnica București
+# UNST Politehnica București — Homepage Demo
 
-Next.js (App Router) + [Payload CMS](https://payloadcms.com) with PostgreSQL, multilingual (RO/EN) frontend, and dark/light theme.
+Static **Second Homepage Type 2** demo for Vercel free tier. No Payload, no database — all content is hardcoded.
+
+## Quick start
+
+```bash
+npm install
+npm run dev
+```
+
+- Site: http://localhost:3000 → `/ro`
+- English: http://localhost:3000/en
+
+## Deploy on Vercel
+
+1. Push this repo and import it in Vercel.
+2. Set env var `NEXT_PUBLIC_SITE_URL` to your production URL (e.g. `https://your-app.vercel.app`).
+3. Framework preset: **Next.js** (default). No database or blob storage needed.
 
 ## Stack
 
-- **Next.js 16** (App Router, Turbopack) + **React 19**
-- **Payload 3** headless CMS (admin at `/admin`, REST/GraphQL under `/api`)
-- **PostgreSQL** via `@payloadcms/db-postgres`
-- **next-intl** for i18n — locales `ro` (default) and `en`, prefixed routes (`/ro`, `/en`)
-- **next-themes** for dark/light mode (class strategy)
-- **Tailwind CSS v4**
-- **Rubik** font via `next/font`
-
-## Getting started
-
-1. Copy env and set a secret:
-   ```bash
-   cp .env.example .env
-   # PAYLOAD_SECRET is required — generate one with:
-   openssl rand -hex 32
-   ```
-2. Start PostgreSQL (Docker):
-   ```bash
-   docker compose up -d
-   ```
-3. Install deps and run:
-   ```bash
-   npm install
-   npm run dev
-   ```
-4. Open:
-   - Frontend: http://localhost:3000 (redirects to `/ro`)
-   - Payload admin: http://localhost:3000/admin (create the first user)
-
-## Project structure
-
-```
-src/
-  app/
-    (frontend)/[locale]/   # Public, localized site (layout, globals.css, pages)
-    (payload)/             # Payload admin + API (not localized)
-  collections/             # Payload collections (Users, Media)
-  components/              # UI components (theme toggle, locale switcher, ...)
-  i18n/                    # next-intl routing, navigation, request config
-  lib/                     # fonts, cn() helper
-  providers/               # ThemeProvider
-  payload.config.ts        # Payload configuration
-messages/                  # ro.json, en.json translation catalogs
-```
-
-## Useful scripts
-
-- `npm run dev` — start dev server
-- `npm run build` / `npm start` — production build / serve
-- `npm run generate:types` — regenerate `src/payload-types.ts` from collections
-- `npm run generate:importmap` — regenerate Payload admin import map
-- `npm run lint` — ESLint
+- Next.js 16 (App Router) + React 19
+- next-intl (RO/EN)
+- Tailwind CSS v4 + Motion
+- Hardcoded demo data in `src/data/homepage.ts`
+- Static assets under `public/demo/`

@@ -1,8 +1,12 @@
 {
   "Home": {
-    "badge": "Universitate Națională de Știință și Tehnică Politehnica București",
-    "title": "Viitorul <hl>ingineriei</hl> începe aici",
-    "subtitle": "Descoperiți facultățile și programele de studiu de excelență, disponibile în centrele noastre universitare din București și Pitești.",
+    "badge": "200+ ani de tradiție · Inovație globală",
+    "title": "Universitatea care <hl>modelează</hl> viitorul ingineresc",
+    "subtitle": "Descoperă facultățile, programele și centrele universitare de excelență din București și Pitești.",
+    "tagline": "București și Pitești · excelență în educația inginerească",
+    "scrollHint": "Derulează",
+    "heroMediaCaption": "Campus Politehnica",
+    "heroMediaLabel": "Animație campus Politehnica, controlată de derulare",
     "ctaBucharest": "Centru Universitar București",
     "ctaPitesti": "Centru Universitar Pitești",
     "announcementsEyebrow": "Noutăți",
@@ -25,7 +29,10 @@
   },
   "Events": {
     "eyebrow": "Calendar",
-    "title": "Evenimente"
+    "title": "Evenimente",
+    "viewEvent": "Vezi evenimentul",
+    "scrollHint": "Derulare automată · pauză la hover",
+    "scrollHintStatic": "Derulare orizontală · swipe"
   },
   "Partners": {
     "eyebrow": "Colaborări",
@@ -43,7 +50,7 @@
   "News": {
     "eyebrow": "Actualitate",
     "title": "Ultimele știri",
-    "description": "Fii la curent cu cele mai recente noutăți din comunitatea Politehnica.",
+    "description": "Fii la curent cu cele mai recente noutăți și anunțuri din comunitatea Politehnica.",
     "viewAll": "Vezi toate știrile",
     "readMore": "Citește mai mult",
     "backToNews": "Înapoi la știri",
@@ -52,6 +59,14 @@
     "relatedTitle": "Știri similare",
     "publishedOn": "Publicat pe",
     "empty": "Nu există știri momentan.",
+    "newsBadge": "Știre",
+    "announcementBadge": "Anunț",
+    "announcementExcerpt": "Detalii și informații oficiale din comunitatea universitară.",
+    "prevFeatured": "Previzualizarea anterioară",
+    "nextFeatured": "Previzualizarea următoare",
+    "autoHint": "Rotire automată · 10s",
+    "manualHint": "Navigare manuală",
+    "featuredTabs": "Previzualizări noutăți",
     "category": {
       "general": "General",
       "admitere": "Admitere",

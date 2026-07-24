@@ -1,8 +1,10 @@
-import type { News } from "@/payload-types";
-
-export type NewsContent = News["content"];
-
-export type NewsCategory = NonNullable<News["category"]>;
+export type NewsCategory =
+  | "general"
+  | "admitere"
+  | "cercetare"
+  | "evenimente"
+  | "parteneriate"
+  | "studenti";
 
 export type NewsListItem = {
   id: string;
@@ -16,8 +18,4 @@ export type NewsListItem = {
   category?: NewsCategory;
   publishedAt: string;
   href: string;
-};
-
-export type NewsDetail = NewsListItem & {
-  content: NewsContent;
 };

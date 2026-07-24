@@ -1,0 +1,47 @@
+---
+description: Enforce semantic typography tokens and accessibility
+globs: src/**/*.{tsx,ts,css}
+alwaysApply: false
+---
+
+# Typography
+
+## Source of truth
+- Tokens and roles for the blueprint type2 experience live in
+  `src/app/(frontend)/[locale]/second-homepage-type2/second-homepage-type2.css`
+- Reusable component: `Typography` from
+  `@/components/second-homepage-type2/typography`
+- Project-wide fluid tokens also exist in `globals.css` `@theme inline`
+- Full guide: `docs/typography.md`
+
+## Do
+- Reuse semantic roles: `shp2-text-display`, `shp2-text-page-title`,
+  `shp2-text-section-title`, `shp2-text-subsection-title`,
+  `shp2-text-card-title`, `shp2-text-eyebrow`, `shp2-text-lead`,
+  `shp2-text-body`, `shp2-text-body-sm`, `shp2-text-caption`,
+  `shp2-text-label`, `shp2-text-meta`
+- Or use `<Typography variant="sectionTitle" as="h2">`
+- Keep one primary `h1` per page
+- Preserve semantic heading order (`h1` → `h2` → `h3`)
+- Use `rem` / `clamp()` for major headings
+- Keep long-form paragraphs roughly `60–75ch` (`shp2-measure`)
+- Hero display max-width ~`10–14ch`
+- Body text ≥ `1rem`; supporting text ≥ `0.875rem`; avoid `< 0.75rem`
+- Body line-height ≥ `1.5` for long copy
+- Uppercase labels may use mono + wider tracking; do not uppercase long headings
+- Check Romanian diacritics (ă â î ș ț) and EN/RO wrapping
+- Keep WCAG AA contrast; do not rely on low-opacity text for essential copy
+
+## Don't
+- Arbitrary one-off sizes like `text-[0.58rem]`, random line-heights, or inline font styles
+- Choose heading level for visual size alone
+- Use `800`/`900` weights unless brand requires it
+- Disable browser text resizing or lock text in fixed pixel containers
+- Truncate critical content with `line-clamp`
+- Duplicate typography rules across components — extend tokens instead
+
+## Fonts (type2)
+- Display: Oswald (`--shp-display`)
+- Body: Libre Franklin (`--shp-body`)
+- Mono labels: IBM Plex Mono (`--shp-mono`) — intentional branded exception
+- Loaded via `next/font` with `latin` + `latin-ext`
