@@ -1,25 +1,35 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { SectionMarker } from "@/components/second-homepage-type2/section-marker";
-import {
-  SketchEvents,
-  SketchPrep,
-  SketchSimulation,
-  SketchTheatre,
-} from "@/components/second-homepage-type2/prospective-sketches";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 type CardKey = "events" | "prep" | "simulation" | "theatre";
 
-const CARD_SKETCH = {
-  events: SketchEvents,
-  prep: SketchPrep,
-  simulation: SketchSimulation,
-  theatre: SketchTheatre,
-} as const;
+const CARD_IMAGES: Record<
+  CardKey,
+  { src: string; alt: string }
+> = {
+  events: {
+    src: "/beneficii/evenimente.png",
+    alt: "Evenimente pentru viitori studenți",
+  },
+  prep: {
+    src: "/beneficii/pregatire-admitere.png",
+    alt: "Pregătire admitere",
+  },
+  simulation: {
+    src: "/beneficii/simulare-admitere.png",
+    alt: "Simulare admitere",
+  },
+  theatre: {
+    src: "/beneficii/spectacole-teatru.png",
+    alt: "Spectacole de teatru",
+  },
+};
 
 export function ProspectivePlate() {
   const t = useTranslations("ProspectiveStudents");
@@ -40,7 +50,7 @@ export function ProspectivePlate() {
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {cards.map((key, index) => {
-            const Sketch = CARD_SKETCH[key];
+            const image = CARD_IMAGES[key];
             return (
               <motion.article
                 key={key}
@@ -54,8 +64,15 @@ export function ProspectivePlate() {
                   href="#"
                   className="group shp-hover-lift flex h-full flex-col border border-[var(--shp-line)] bg-[var(--shp-paper)]"
                 >
-                  <div className="relative aspect-[5/4] overflow-hidden border-b border-[var(--shp-line)] bg-[var(--shp-paper-deep)]/40 px-4 py-3">
-                    <Sketch className="h-full w-full" />
+                  <div className="relative flex aspect-[5/4] items-center justify-center overflow-hidden border-b border-[var(--shp-line)] bg-[var(--shp-paper-deep)]/40 p-5 md:p-6">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={480}
+                      height={384}
+                      sizes="(max-width: 640px) 70vw, (max-width: 1280px) 35vw, 18vw"
+                      className="h-auto max-h-full w-auto max-w-[78%] object-contain transition duration-500 group-hover:scale-[1.03]"
+                    />
                   </div>
                   <div className="flex flex-1 flex-col p-4">
                     <p className="shp-mono text-[0.75rem] uppercase tracking-[0.08em] text-[var(--shp-muted)]">

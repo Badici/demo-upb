@@ -27,6 +27,9 @@ const nextConfig: NextConfig = {
         pathname: '/sketch-assets/**',
       },
       {
+        pathname: '/beneficii/**',
+      },
+      {
         pathname: '/**',
       },
     ],
